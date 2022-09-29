@@ -32,7 +32,7 @@ RUN echo "Listen 443" > /etc/apache2/ports.conf
 COPY thruk.conf /etc/apache2/sites-available/thruk.conf
 RUN a2ensite thruk
 
-RUN a2enmod ssl rewrite headers
+RUN a2enmod ssl rewrite headers proxy_http
 
 COPY start.sh /start.sh
 
