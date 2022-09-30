@@ -49,7 +49,7 @@
 
         <AttributeFilter type="XML" validate="true" path="attribute-policy.xml"/>
 
-        <CredentialResolver type="File" key="sp-key.pem" certificate="sp-cert.pem"/>
+        <CredentialResolver type="File" key="certs/sp-key.pem" certificate="certs/sp-cert.pem"/>
     </ApplicationDefaults>
     <SecurityPolicyProvider type="XML" validate="true" path="security-policy.xml"/>
 
