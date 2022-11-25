@@ -9,6 +9,7 @@
                          metadataAttributePrefix="Meta-">
 
         <Sessions lifetime="28800" timeout="36000" relayState="ss:mem"
+                   redirectLimit="exact"
                   checkAddress="false" handlerSSL="true" cookieProps="http">
             <Logout>SAML2 Local</Logout>
 
