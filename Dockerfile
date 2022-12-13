@@ -15,7 +15,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY naemon.conf /etc/thruk/thruk_local.d/naemon.conf
-COPY shib.conf /etc/thruk/thruk_local.d/shib.conf
 COPY 99_thruk_local_d.conf /etc/thruk/thruk_local.d/99_thruk_local_d.conf
 
 # Install Shibboleth
