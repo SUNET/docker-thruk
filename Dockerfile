@@ -34,6 +34,8 @@ RUN a2ensite thruk
 
 RUN a2enmod ssl rewrite headers proxy_http
 
+COPY 99_thruk_local_d.conf /etc/thruk/thruk_local.d/99_thruk_local_d.conf
+
 COPY start.sh /start.sh
 
 ENTRYPOINT ["/start.sh"]
