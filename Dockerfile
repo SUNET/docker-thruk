@@ -16,6 +16,7 @@ RUN apt-get update && \
 
 COPY naemon.conf /etc/thruk/thruk_local.d/naemon.conf
 COPY shib.conf /etc/thruk/thruk_local.d/shib.conf
+COPY 99_thruk_local_d.conf /etc/thruk/thruk_local.d/99_thruk_local_d.conf
 
 # Install Shibboleth
 RUN apt-get update && \
@@ -34,7 +35,6 @@ RUN a2ensite thruk
 
 RUN a2enmod ssl rewrite headers proxy_http
 
-COPY 99_thruk_local_d.conf /etc/thruk/thruk_local.d/99_thruk_local_d.conf
 
 COPY start.sh /start.sh
 
