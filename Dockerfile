@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM debian:bookworm
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -9,7 +9,7 @@ RUN apt-get update && \
 
 # Setup custom repo and install thruk
 RUN curl -sS https://labs.consol.de/repo/stable/RPM-GPG-KEY | gpg --dearmor > /usr/share/keyrings/labs.consol.de-5E3C45D7B312C643.gpg
-RUN echo 'deb [signed-by=/usr/share/keyrings/labs.consol.de-5E3C45D7B312C643.gpg] http://labs.consol.de/repo/stable/debian bullseye main' > /etc/apt/sources.list.d/consol.list
+RUN echo 'deb [signed-by=/usr/share/keyrings/labs.consol.de-5E3C45D7B312C643.gpg] http://labs.consol.de/repo/stable/debian bookworm main' > /etc/apt/sources.list.d/consol.list
 RUN apt-get update && \
     apt-get install --no-install-recommends -y thruk && \
     rm -rf /var/lib/apt/lists/*
