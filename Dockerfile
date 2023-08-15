@@ -8,8 +8,8 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Setup custom repo and install thruk
-RUN echo 'deb http://download.opensuse.org/repositories/home:/naemon/Debian_12/ /' | sudo tee /etc/apt/sources.list.d/home:naemon.list
-RUN curl -fsSL https://download.opensuse.org/repositories/home:naemon/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_naemon.gpg > /dev/null
+RUN echo 'deb http://download.opensuse.org/repositories/home:/naemon/Debian_12/ /' > /etc/apt/sources.list.d/home:naemon.list
+RUN curl -fsSL https://download.opensuse.org/repositories/home:naemon/Debian_12/Release.key | gpg --dearmor > /etc/apt/trusted.gpg.d/home_naemon.gpg
 
 
 RUN apt-get update && \
