@@ -37,11 +37,10 @@
             helpLocation="/about.html"
             styleSheet="/shibboleth-sp/main.css"/>
 
-        <MetadataProvider
-                type="XML"
-                url="https://mds.swamid.se/md/swamid-idp.xml"
-                backingFilePath="swamid-idp.xml" reloadInterval="300">
-             <MetadataFilter type="Signature" certificate="md-signer2.crt" verifyBackup="false"/>
+        <MetadataProvider type="MDQ" id="mdq.swamid.se" ignoreTransport="true" cacheDirectory="mdq.swamid.se"
+		    baseUrl="https://mds.swamid.se/">
+            <MetadataFilter type="Signature" certificate="md-signer2.crt"/>
+            <MetadataFilter type="RequireValidUntil" maxValidityInterval="2419200"/>
         </MetadataProvider>
 
        <AttributeExtractor type="XML" validate="true" reloadChanges="false" path="attribute-map.xml"/>
