@@ -1,12 +1,5 @@
----
-git:
-  branch: main
-triggers:
-  cron: "@daily"
-clean_workspace: true
 builders:
-  - docker
-docker_name: thruk
-docker_tags:
-  - "latest"
-docker_no_cache: true
+  - script
+script:
+  - "./jenkins-docker-build-and-push.sh"
+clean_workspace: true
