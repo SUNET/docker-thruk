@@ -16,6 +16,7 @@ RUN apt-get update && \
 
 COPY naemon.conf /etc/thruk/thruk_local.d/naemon.conf
 COPY 99_thruk_local_d.conf /etc/thruk/thruk_local.d/99_thruk_local_d.conf
+COPY log4perl.conf /etc/thruk/log4perl.conf
 
 # Install Shibboleth
 RUN apt-get update && \
@@ -45,9 +46,6 @@ RUN ln -sf /proc/self/fd/1 /var/log/shibboleth/shibd.log
 RUN ln -sf /proc/self/fd/1 /var/log/shibboleth/shibd_warn.log
 RUN ln -sf /proc/self/fd/1 /var/log/shibboleth/signature.log
 RUN ln -sf /proc/self/fd/1 /var/log/shibboleth/transaction.log
-
-# Output to stdout for better handling in a container environment
-RUN ln -sf /proc/self/fd/1 /var/log/thruk/thruk.log
 
 
 COPY start.sh /start.sh
