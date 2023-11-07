@@ -40,10 +40,15 @@ RUN a2ensite thruk
 
 RUN a2enmod ssl rewrite headers proxy_http
 
+# Output to stdout for better handling in a container environment
 RUN ln -sf /proc/self/fd/1 /var/log/shibboleth/shibd.log
 RUN ln -sf /proc/self/fd/1 /var/log/shibboleth/shibd_warn.log
 RUN ln -sf /proc/self/fd/1 /var/log/shibboleth/signature.log
 RUN ln -sf /proc/self/fd/1 /var/log/shibboleth/transaction.log
+
+# Output to stdout for better handling in a container environment
+RUN ln -sf /proc/self/fd/1 /var/log/thruk/thruk.log
+
 
 COPY start.sh /start.sh
 
