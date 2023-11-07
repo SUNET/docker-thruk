@@ -40,6 +40,10 @@ RUN a2ensite thruk
 
 RUN a2enmod ssl rewrite headers proxy_http
 
+RUN ln -sf /proc/self/fd/1 /var/log/shibboleth/shibd.log
+RUN ln -sf /proc/self/fd/1 /var/log/shibboleth/shibd_warn.log
+RUN ln -sf /proc/self/fd/1 /var/log/shibboleth/signature.log
+RUN ln -sf /proc/self/fd/1 /var/log/shibboleth/transaction.log
 
 COPY start.sh /start.sh
 
