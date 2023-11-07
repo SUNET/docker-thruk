@@ -28,7 +28,7 @@ COPY shibboleth2.xml /etc/shibboleth/shibboleth2.xml
 
 # Disable apache default site and port 80
 RUN a2dissite 000-default
-RUN a2conf other-vhosts-access-log
+RUN a2disconf other-vhosts-access-log
 RUN echo "Listen 443" > /etc/apache2/ports.conf
 
 # Output to stderr/stdout for better handling in a container environment
