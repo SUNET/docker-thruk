@@ -8,7 +8,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Setup custom repo and install thruk
-COPY naemon.asc  /etc/apt/auth.conf.d/naemon.asc
+COPY naemon.asc  /etc/apt/trusted.gpg.d/naemon.asc
 RUN echo "deb [signed-by=/etc/apt/trusted.gpg.d/naemon.asc] http://download.opensuse.org/repositories/home:/naemon/Debian_$(lsb_release -rs)/ ./" >> /etc/apt/sources.list.d/naemon-stable.list
 RUN apt-get update && \
     apt-get install --no-install-recommends -y thruk && \
