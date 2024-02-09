@@ -9,7 +9,7 @@ RUN apt-get update && \
 
 # Setup custom repo and install thruk
 COPY labs.consol.de-RPM-GPG-KEY /etc/apt/auth.conf.d/labs.consol.de-RPM-GPG-KEY
-RUN echo "deb [signed-by=/usr/share/keyrings/labs.consol.de-5E3C45D7B312C643.gpg] http://labs.consol.de/repo/stable/debian $(lsb_release -cs) main" > /etc/apt/sources.list.d/consol.list
+RUN  echo "deb [signed-by=/etc/apt/auth.conf.d/labs.consol.de-RPM-GPG-KEY] http://labs.consol.de/repo/stable/debian $(lsb_release -cs) main" > /etc/apt/sources.list.d/labs-consol-stable.list
 RUN apt-get update && \
     apt-get install --no-install-recommends -y thruk && \
     rm -rf /var/lib/apt/lists/*
