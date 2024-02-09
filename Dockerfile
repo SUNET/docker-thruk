@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Depends for setting up a custom apt repo
 RUN apt-get update && \
-    apt-get install --no-install-recommends -y gpg curl ca-certificates && \
+    apt-get install --no-install-recommends -y gpg curl ca-certificates lsb-release && \
     rm -rf /var/lib/apt/lists/*
 
 # Setup custom repo and install thruk
