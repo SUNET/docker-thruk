@@ -8,8 +8,8 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Setup custom repo and install thruk
-COPY labs.consol.de-RPM-GPG-KEY /etc/apt/auth.conf.d/labs.consol.de-RPM-GPG-KEY
-RUN  echo "deb [signed-by=/etc/apt/auth.conf.d/labs.consol.de-RPM-GPG-KEY] http://labs.consol.de/repo/stable/debian $(lsb_release -cs) main" > /etc/apt/sources.list.d/labs-consol-stable.list
+COPY naemon.asc  /etc/apt/auth.conf.d/naemon.asc
+RUN echo "deb [signed-by=/etc/apt/trusted.gpg.d/naemon.asc] http://download.opensuse.org/repositories/home:/naemon/Debian_$(lsb_release -rs)/ ./" >> /etc/apt/sources.list.d/naemon-stable.list
 RUN apt-get update && \
     apt-get install --no-install-recommends -y thruk && \
     rm -rf /var/lib/apt/lists/*
