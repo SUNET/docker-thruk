@@ -20,7 +20,7 @@ COPY log4perl.conf /etc/thruk/log4perl.conf
 
 # Install Shibboleth
 RUN apt-get update && \
-    apt-get install --no-install-recommends -y libapache2-mod-shib && \
+    apt-get install --no-install-recommends -y libapache2-mod-shib expect && \
     rm -rf /var/lib/apt/lists/*
 # Ensure to follow SWAMIDs rules regarding metadata
 RUN sed -i 's/default_bits=3072/default_bits=4096/' /usr/sbin/shib-keygen
@@ -41,12 +41,7 @@ RUN a2ensite thruk
 
 RUN a2enmod ssl rewrite headers proxy_http
 
-# Output to stdout for better handling in a container environment
-RUN ln -sf /proc/self/fd/1 /var/log/shibboleth/shibd.log
-RUN ln -sf /proc/self/fd/1 /var/log/shibboleth/shibd_warn.log
-RUN ln -sf /proc/self/fd/1 /var/log/shibboleth/signature.log
-RUN ln -sf /proc/self/fd/1 /var/log/shibboleth/transaction.log
-
+RUN sed -ir 's#/var/log/shibboleth/(.+).log#/tmp/logpipe-shib#g' /etc/shibboleth/shibd.logger
 
 COPY start.sh /start.sh
 
