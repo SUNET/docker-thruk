@@ -41,7 +41,7 @@ RUN a2ensite thruk
 
 RUN a2enmod ssl rewrite headers proxy_http
 
-RUN sed -ir 's#/var/log/shibboleth/(.+).log#/tmp/logpipe-shib#g' /etc/shibboleth/shibd.logger
+RUN sed -i -r 's#/var/log/shibboleth/(.+).log#/tmp/logpipe-shib#g' /etc/shibboleth/shibd.logger
 
 COPY start.sh /start.sh
 
