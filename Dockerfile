@@ -39,7 +39,7 @@ RUN echo 'TransferLog /dev/stdout'  >> /etc/apache2/apache2.conf
 COPY thruk.conf /etc/apache2/sites-available/thruk.conf
 RUN a2ensite thruk
 
-RUN a2enmod ssl rewrite headers proxy_http
+RUN a2enmod ssl rewrite headers proxy_http authz_groupfile
 
 RUN sed -i -r 's#/var/log/shibboleth/(.+).log#/tmp/logpipe-shib#g' /etc/shibboleth/shibd.logger
 
